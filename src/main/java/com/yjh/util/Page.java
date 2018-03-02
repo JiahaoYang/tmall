@@ -2,14 +2,14 @@ package com.yjh.util;
 
 public class Page {
     /**
-     * current: 当前页的第一条记录(从0开始)
+     * start: 当前页的第一条记录(从0开始)
      * count: 每页记录数
      * total: 记录总数
      */
-    private int current;
+    private int start;
     private int count;
     private int total;
-    private String para;
+    private String param;
 
     private static final int DEFAULT_COUNT = 5;
 
@@ -17,17 +17,17 @@ public class Page {
         count = DEFAULT_COUNT;
     }
 
-    public Page(int current, int count) {
-        this.current = current;
+    public Page(int start, int count) {
+        this.start = start;
         this.count = count;
     }
 
-    public int getCurrent() {
-        return current;
+    public int getStart() {
+        return start;
     }
 
-    public void setCurrent(int current) {
-        this.current = current;
+    public void setStart(int start) {
+        this.start = start;
     }
 
     public int getCount() {
@@ -46,21 +46,21 @@ public class Page {
         this.total = total;
     }
 
-    public String getPara() {
-        return para;
+    public String getParam() {
+        return param;
     }
 
-    public void setPara(String para) {
-        this.para = para;
+    public void setParam(String param) {
+        this.param = param;
     }
 
     @Override
     public String toString() {
         return "Page{" +
-                "current=" + current +
+                "start=" + start +
                 ", count=" + count +
                 ", total=" + total +
-                ", para='" + para + '\'' +
+                ", param='" + param + '\'' +
                 '}';
     }
 
@@ -80,12 +80,16 @@ public class Page {
         return  last < 0 ? 0 : last;
     }
 
-    public boolean hasPrevious() {
-        return current > 0;
+    /**
+     * EL表达式找方法
+     * 返回类型boolean,调用isXXX函数
+     */
+    public boolean isHasPrevious() {
+        return start > 0;
     }
 
-    public boolean hasNext() {
-        return current < getLast();
+    public boolean isHasNext() {
+        return start < getLast();
     }
 
 }

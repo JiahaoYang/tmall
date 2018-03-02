@@ -11,7 +11,7 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
-        function checkEmpty(id, name) {
+        function  checkEmpty(id, name) {
             let value = $("#" + id).val();
             if (value.length === 0) {
                 alert(name + "不能为空");

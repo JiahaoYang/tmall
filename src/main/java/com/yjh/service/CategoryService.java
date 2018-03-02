@@ -10,4 +10,5 @@ public interface CategoryService {
 
     List<Category> list(Page page);
     int total();
+    int add(Category category);
 }
