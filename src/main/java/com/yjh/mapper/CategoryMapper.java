@@ -1,44 +1,21 @@
 package com.yjh.mapper;
 
 import com.yjh.pojo.Category;
-import com.yjh.util.Page;
-import org.apache.ibatis.annotations.*;
-
+import com.yjh.pojo.CategoryExample;
 import java.util.List;
 
-
 public interface CategoryMapper {
-/*    @Select(" SELECT * FROM category ORDER BY id limit #{start}, #{count}")
-    List<Category> list(Page page);
+    int deleteByPrimaryKey(Integer id);
 
-    @Select(" SELECT COUNT(*) FROM category ")
-    int total();*/
+    int insert(Category record);
 
-    @Select(" SELECT * FROM category ORDER BY id ")
-    List<Category> list();
+    int insertSelective(Category record);
 
+    List<Category> selectByExample(CategoryExample example);
 
-    @Insert(" INSERT INTO category(name) VALUES(#{name})")
-    @Options(useGeneratedKeys = true)
-    int add(Category category);
+    Category selectByPrimaryKey(Integer id);
 
-    @Delete(" DELETE FROM category where id=#{id} ")
-    int delete(int id);
+    int updateByPrimaryKeySelective(Category record);
 
-    @Select(" SELECT * FROM category WHERE id=#{id}")
-    Category get(int id);
-
-    @Update(" UPDATE category SET name=#{name} WHERE id=#{id} ")
-    int update(Category category);
-}
-
-class Cagegory {
-    private Integer id;
-    private String name;
-}
-
-class product {
-    private Integer id;
-    private String name;
-    private Float price;
+    int updateByPrimaryKey(Category record);
 }

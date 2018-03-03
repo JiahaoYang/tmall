@@ -1,15 +1,9 @@
 package com.yjh.pojo;
 
-import org.springframework.stereotype.Component;
-
-import java.io.Serializable;
-
-@Component
-public class Category implements Serializable{
+public class Category {
     private Integer id;
-    private String name;
 
-    public Category() {}
+    private String name;
 
     public Integer getId() {
         return id;
@@ -24,14 +18,6 @@ public class Category implements Serializable{
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        this.name = name == null ? null : name.trim();
     }
 }

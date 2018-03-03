@@ -2,6 +2,7 @@ package com.yjh.service.impl;
 
 import com.yjh.mapper.CategoryMapper;
 import com.yjh.pojo.Category;
+import com.yjh.pojo.CategoryExample;
 import com.yjh.service.CategoryService;
 import com.yjh.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,26 +29,28 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public List<Category> list() {
-        return categoryMapper.list();
+        CategoryExample example = new CategoryExample();
+        example.setOrderByClause("id");
+        return categoryMapper.selectByExample(example);
     }
 
     @Override
     public int add(Category category) {
-        return categoryMapper.add(category);
+        return categoryMapper.insert(category);
     }
 
     @Override
     public int delete(int id) {
-        return categoryMapper.delete(id);
+        return categoryMapper.deleteByPrimaryKey(id);
     }
 
     @Override
     public Category get(int id) {
-        return categoryMapper.get(id);
+        return categoryMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int update(Category category) {
-        return categoryMapper.update(category);
+        return categoryMapper.updateByPrimaryKeySelective(category);
     }
 }
