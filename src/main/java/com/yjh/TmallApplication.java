@@ -14,5 +14,4 @@ public class TmallApplication {
         SpringApplication.run(TmallApplication.class, args);
     }
 
-
 }
