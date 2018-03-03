@@ -5,9 +5,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/back/style.css">
+    <link rel="stylesheet" href="css/back/style.css">
+    <%--<script src="js/jquery/jquery-3.3.1.min.js"></script>--%>
+    <%--<link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">--%>
+    <%--<script src="js/bootstrap/bootstrap.min.js"></script>--%>
+    <script  src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
@@ -64,7 +67,4 @@
         })
     </script>
 </head>
-<body>
-
-</body>
 </html>

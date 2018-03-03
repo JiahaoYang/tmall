@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <title>test</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,66 +11,4 @@
             min-height: 220px;
         }
     </style>
-<body>
-<div class="workingArea">
-    <h1 class="label label-info">分类管理</h1>
-    <br>
-    <br>
 
-    <div class="listTableDiv">
-        <table class="table table-bordered table-hover">
-            <thead>
-            <tr class="success">
-                <td>ID</td>
-                <td>图片</td>
-                <td>分类名称</td>
-                <td>属性管理</td>
-                <td>产品管理</td>
-                <td>编辑</td>
-                <td>删除</td>
-            </tr>
-            </thead>
-            <tr>
-                <td>1</td>
-                <td><img src="img/category/81"></td>
-                <td>平板</td>
-                <td><a href="#nowhere"><span class="glyphicon glyphicon-th-list"></span></a></td>
-                <td><span class="glyphicon glyphicon-hdd"></span></td>
-                <td><span class="glyphicon glyphicon-th-list"></span></td>
-                <td><span class="glyphicon glyphicon-hdd"></span></td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="panel panel-warning addDiv">
-        <div class="panel-heading">新增分类</div>
-        <div class="panel-body">
-            <form method="post" id="addForm" enctype="multipart/form-data">
-                <table class="addTable">
-                    <tr>
-                        <td>分类名称</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>分类图片</td>
-                        <td><input accept="image/*" type="file" ></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div>
-    <ul>
-        <li>
-            <a  href="?start=0" aria-label="Previous" >
-                <span aria-hidden="true">«</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>

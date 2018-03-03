@@ -1,5 +1,7 @@
 package com.yjh.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yjh.pojo.Category;
 import com.yjh.service.CategoryService;
 import com.yjh.util.*;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
@@ -23,7 +26,8 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping("admin_category_list")
+
+/*    @RequestMapping("admin_category_list")
     public String list(Model model, Page page) {
         List<Category> cs = categoryService.list(page);
         int total = categoryService.total();
@@ -31,7 +35,19 @@ public class CategoryController {
         model.addAttribute("cs", cs);
         model.addAttribute("page", page);
         return "admin/listCategory";
+    }*/
+
+    @RequestMapping("admin_category_list")
+    public String list(Model model, Page page) {
+        PageHelper.offsetPage(page.getStart(), page.getCount());
+        List<Category> cs = categoryService.list();
+        int total = (int) new PageInfo<>(cs).getTotal();
+        page.setTotal(total);
+        model.addAttribute("cs", cs);
+        model.addAttribute("page", page);
+        return "admin/listCategory";
     }
+
 
     @RequestMapping("admin_category_add")
     public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
@@ -53,4 +69,34 @@ public class CategoryController {
         return "redirect:/admin_category_list";
     }
 
+    @RequestMapping("admin_category_delete")
+    public String delete(int id, HttpSession session) {
+        categoryService.delete(id);
+        File folder = new File(session.getServletContext().getRealPath("img/category"));
+        File image = new File(folder, id + ".jpg");
+        image.delete();
+
+        return "redirect:/admin_category_list";
+    }
+
+    @RequestMapping("admin_category_edit")
+    public String edit(int id, Model model) {
+        Category category = categoryService.get(id);
+        model.addAttribute("c", category);
+        return "admin/editCategory";
+    }
+
+    @RequestMapping("admin_category_update")
+    public String update(Category category, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
+        categoryService.update(category);
+        MultipartFile image = uploadedImageFile.getImage();
+        if (null != image && !image.isEmpty()) {
+            File folder = new File(session.getServletContext().getRealPath("img/category"));
+            File file = new File(folder, category.getId() + ".jpg");
+            image.transferTo(file); //图片上传
+            BufferedImage img = ImageUtil.change2jpg(file);
+            ImageIO.write(img, "jpg", file);
+        }
+        return "redirect:admin_category_list";
+    }
 }
