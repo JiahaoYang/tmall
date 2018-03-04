@@ -1,6 +1,6 @@
 package com.yjh.pojo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Product {
     private Integer id;
@@ -17,7 +17,9 @@ public class Product {
 
     private Integer cid;
 
-    private Date createDate;
+    private LocalDate createDate;
+
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -75,11 +77,19 @@ public class Product {
         this.cid = cid;
     }
 
-    public Date getCreateDate() {
+    public LocalDate getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

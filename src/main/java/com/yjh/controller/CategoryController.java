@@ -39,9 +39,9 @@ public class CategoryController {
 
     @RequestMapping("admin_category_list")
     public String list(Model model, Page page) {
-        PageHelper.offsetPage(page.getStart(), page.getCount());
-        List<Category> cs = categoryService.list();
-        int total = (int) new PageInfo<>(cs).getTotal();
+        PageHelper.offsetPage(page.getStart(), page.getCount()); //指定分页参数
+        List<Category> cs = categoryService.list(); //获取对应分页数据
+        int total = (int) new PageInfo<>(cs).getTotal(); //获取总数
         page.setTotal(total);
         model.addAttribute("cs", cs);
         model.addAttribute("page", page);
