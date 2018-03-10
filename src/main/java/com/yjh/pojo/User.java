@@ -30,4 +30,17 @@ public class User {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+    public String getAnonymousName() {
+        if (null == name)
+            return null;
+        else if (name.length() <= 1)
+            return "*";
+        else if (name.length() == 2)
+            return name.charAt(0) + "*";
+        char[] cs = name.toCharArray();
+        for (int i = 1; i < cs.length - 1; ++i)
+            cs[i] = '*';
+        return new String(cs);
+    }
 }

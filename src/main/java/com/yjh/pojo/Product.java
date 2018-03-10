@@ -1,6 +1,7 @@
 package com.yjh.pojo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Product {
     private Integer id;
@@ -19,10 +20,19 @@ public class Product {
 
     private LocalDate createDate;
 
+
     //非数据库字段
     private Category category;
 
     private ProductImage firstProductImage;
+
+    private List<ProductImage> productSingleImages;
+
+    private List<ProductImage> productDetailImages;
+
+    private Integer saleCount;
+
+    private Integer reviewCount;
 
     public Integer getId() {
         return id;
@@ -102,5 +112,37 @@ public class Product {
 
     public void setFirstProductImage(ProductImage firstProductImage) {
         this.firstProductImage = firstProductImage;
+    }
+
+    public List<ProductImage> getProductSingleImages() {
+        return productSingleImages;
+    }
+
+    public void setProductSingleImages(List<ProductImage> productSingleImages) {
+        this.productSingleImages = productSingleImages;
+    }
+
+    public List<ProductImage> getProductDetailImages() {
+        return productDetailImages;
+    }
+
+    public void setProductDetailImages(List<ProductImage> productDetailImages) {
+        this.productDetailImages = productDetailImages;
+    }
+
+    public Integer getSaleCount() {
+        return saleCount;
+    }
+
+    public void setSaleCount(Integer saleCount) {
+        this.saleCount = saleCount;
+    }
+
+    public Integer getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(Integer reviewCount) {
+        this.reviewCount = reviewCount;
     }
 }
